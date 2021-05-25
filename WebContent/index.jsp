@@ -9,6 +9,6 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<%@ include file="menu.jsp" %>
-	Tree 홈페이지입니당~~
+	Tree 홈페이지입니당~~!!!~
 </body>
 </html>
