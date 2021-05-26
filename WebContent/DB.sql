@@ -1,23 +1,65 @@
-create table USERINFO(
-	usercode	number(5)	primary key,
-	username	varchar2(20) not null,
-	usergender	varchar2(1)	not null,
-	useraddress	varchar2(30) not null,
-	usernickname	varchar2(10) not null
+CREATE TABLE "TREEINFO" (
+	"TREENAME"	VARCHAR2(100)		NULL,
+	"TREELIFE"	VARCHAR2(5)		NULL,
+	"TREEPOINT"	VARCHAR2(1000)		NULL,
+	"TREEPHOTO"	VARCHAR2(1000)		NULL
 );
-create table TREEINFO(
-	treecode	number(5),
-	treename	varchar2(20),
-	treelife	varchar2(5),
-	treepoint	varchar2(1000),
-	constraint treeinfo_pk	primary key(treecode, treename)
-);ㅇ
-insert into userinfo values(00001, '媛뺣룞�쁽','M','�닔吏�援�','媛뺣룄');
-insert into userinfo values(00002, '媛뺤쓳李�','M','吏�援�','蹂��깭');
-insert into userinfo values(00003, '�솉以��쁺','M','�슦二�','蹂��깭');
-insert into userinfo values(00004, '�꽌以��샇','F','�깭�뼇怨�','蹂��깭');
-insert into userinfo values(00005, '�삤誘쇱슦','M','�슦由ъ��븯','蹂��깭');
 
-insert into treeinfo values(00001,'�뒓�떚�굹臾�','1000','�뒓�떚�굹臾대뒗 �뒓由낅굹臾닿낵�뿉 �냽�븯�뒗 �굺�뿽�겙�궎�굹臾댁씠�떎. �뒓由낅굹臾닿낵�뿉 �냽�븯�뒗 �굹臾댁쓽 �듅吏뺤� �옂�씠 �솑�옂�씠怨� 媛��옣�옄由� �넲�땲媛� 諛쒕떖�븯怨� �옂 �븘�옯遺�遺꾩� 醫뚯슦媛� 鍮꾨�移��쑝濡� 諛쒕떖�븯�뒗 吏앷턿�뫁�씠 �옂�쓣 媛�吏�怨� �굹臾대뱾�씠�떎.');
-insert into treeinfo values(00002,'�궛�뵺�굹臾�','80','痢듭링�굹臾닿낵 痢듭링�굹臾댁냽�뿉 �냽�븯�뒗 �굺�뿽 �솢�뿽 援먮ぉ. 寃쎄린�룄 �씠�궓 吏��뿭�뿉 �옄�깮�븳�떎. �뱾留ㅻ굹臾�, 誘몄쁺苑껊굹臾�, 以��뵺�굹臾�, �냼由щ뵺�굹臾�, �븷湲곗궛�뵺�굹臾�, 援녹��궛�뵺�굹臾� �벑�쑝濡� �떎�뼇�븯寃� 遺덈┛�떎. �썝�궛吏��뒗 �븳援�怨� �씪蹂몄씠�떎.');
-insert into treeinfo values(00003,'�냼�굹臾�','140','洹몃읆, 寃됱뵪�떇臾쇱쓽 ���몴�쟻 �떇臾쇱씤 �냼�굹臾댁쓽 �깮源��깉�� �듅吏뺤뿉 ���빐 �븣�븘蹂쇨퉴�슂. �냼�굹臾대뒗 以꾧린�뒗 �넂�씠 35m, 吏�由� 1.8m �젙�룄�씠硫� �닔�뵾�뒗 遺됱�鍮쏆쓣 �씍 媛덉깋�쓣 �쓣吏�留� 諛묐�遺꾩� 寃��� 媛덉깋�엯�땲�떎. �옂�� 諛붾뒛 紐⑥뼇�쓽 �옂�씠 2媛쒖뵫 萸됱퀜�굹硫�, 2�뀈�씠 吏��굹硫� 諛묐�遺꾩쓽 諛붾뒛�옂�씠 �뼥�뼱吏묐땲�떎.');
+CREATE TABLE "USERINFO" (
+	"USERID"	VARCHAR2(50)		NOT NULL,
+	"USERPW"	VARCHAR2(30)		NULL,
+	"USERNAME"	VARCHAR2(20)		NULL,
+	"USERGENDER"	VARCHAR2(1)		NULL,
+	"NICKNAME"	VARCHAR2(30)		NULL
+);
+
+CREATE TABLE "TREECORPORATION" (
+	"CPNAME"	VARCHAR2(20)		NOT NULL,
+	"CPURL"	VARCHAR2(500)		NULL,
+	"CPINTRO"	VARCHAR2(2000)		NULL,
+	"CPPHOTO"	VARCHAR2(1000)		NULL,
+	"CPCALL"	VARCHAR2(15)		NULL
+);
+CREATE TABLE "TREECAMPAIN" (
+	"TCCODE"	NUMBER(3)		NOT NULL,
+	"CPNAME"	VARCHAR2(50)		NOT NULL,
+	"TCINTRO"	VARCHAR2(2000)		NULL,
+	"TCURL"	VARCHAR2(500)		NULL,
+	"TCCALL"	VARCHAR2(15)		NULL
+);
+ALTER TABLE "TREEINFO" ADD CONSTRAINT "PK_TREEINFO" PRIMARY KEY (
+	"TREENAME"
+);
+
+ALTER TABLE "USERINFO" ADD CONSTRAINT "PK_USERINFO" PRIMARY KEY (
+	"USERID"
+);
+
+ALTER TABLE "TREECORPORATION" ADD CONSTRAINT "PK_TREECORPORATION" PRIMARY KEY (
+	"CPNAME"
+);
+
+ALTER TABLE "TREECAMPAIN" ADD CONSTRAINT "PK_TREECAMPAIN" PRIMARY KEY (
+	"TCCODE",
+	"CPNAME"
+);
+
+ALTER TABLE "TREECAMPAIN" ADD CONSTRAINT "FK_TP_TO_TC" FOREIGN KEY (
+	"CPNAME"
+)
+REFERENCES "TREECORPORATION" (
+	"CPNAME"
+);
+/*TREEINFO 가값*/
+INSERT INTO TREEINFO VALUES('오민우나무','100','학생이다.','오민우.JPG');
+INSERT INTO TREEINFO VALUES('서준호나무','90','학생이다.','서준호.JPG');
+
+/*USERINFO 가값*/
+INSERT INTO USERINFO VALUES('abc123','1234','오민우','M','닝겐군단');
+INSERT INTO USERINFO VALUES('ZZ','1','서준호','F','SLDRPSRNSEKS');
+
+/*TREECORPORATION 가값*/
+INSERT INTO TREECORPORATION VALUES('트리플래닛','https://treepla.net/','나무심는 기업','트리플래닛.JPG','02-512-2492');
+
+/*TREECAMPAIN 가값*/
+INSERT INTO TREECAMPAIN VALUES('001','트리플래닛','강원도 산불 피해하는 거','https://treepla.net/forestfires','02-512-2492');
