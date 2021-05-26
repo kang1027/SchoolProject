@@ -1,4 +1,6 @@
-# SchoolProject
-응용프로그래밍 개발 반 프로젝트
+# 제작 이유
+무차별적인 벌목과 지역개발로인하여 점점 파괴되는 산림을 보존하기 위해 만들었다.
 
-나무심기가 주제입니당
+# ERD
+https://www.erdcloud.com/d/dH7pTQZrWXHaJJzfA
+
