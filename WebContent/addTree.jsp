@@ -31,7 +31,9 @@
 				<td>
 					<input type="file" class="hidden_input" id="imageSelector" name="treePhoto" 
 					accept="image/jpeg, image/jpg, image/png"><br>
-					<img src="" class="thumb" style="width : 200px; height : 300px;">
+					<img src="" class="thumb">
+					<input type="button" id="changeImgSize" value="원본 보기" style="visibility: hidden;">
+					<input type="button" id="reChangeImgSize" value="되돌리기" style="visibility: hidden;">
 				</td>
 			</tr>
 			<tr>
@@ -51,6 +53,8 @@
 		  if(validateType(elem.files[0])){
 		      var preview = document.querySelector('.thumb');
 		      preview.src = URL.createObjectURL(elem.files[0]); //파일 객체에서 이미지 데이터 가져옴.
+		      document.getElementById('changeImgSize').style.visibility = "visible";
+		      document.querySelector(".thumb").width = 200;
 		      preview.onload = function() {
 		          URL.revokeObjectURL(preview.src); //URL 객체 해제
 		      }
@@ -62,8 +66,16 @@
 		    console.log('이미지 파일이 아닙니다.');
 		  }
 		});
-		
-		
+		document.getElementById('changeImgSize').addEventListener('click',function(){
+			document.querySelector(".thumb").width = document.querySelector(".thumb").naturalWidth;
+			document.getElementById('changeImgSize').style.visibility = "hidden";
+			document.getElementById('reChangeImgSize').style.visibility = "visible";
+		})
+		document.getElementById('reChangeImgSize').addEventListener('click',function(){
+			document.querySelector(".thumb").width = 200;
+			document.getElementById('reChangeImgSize').style.visibility = "hidden";
+			document.getElementById('changeImgSize').style.visibility = "visible";
+		})
 	</script>
 </body>
 </html>

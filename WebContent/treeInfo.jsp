@@ -19,12 +19,12 @@
 	
 	<%@ include file="header.jsp" %>
 	<%@ include file="menu.jsp" %>
-	<table border="1" width="500px" >
+	<table border="1" width="1000px" >
 	 	<tr>
 	 		<th width="15%">나무 이름</th>
 	 		<th width="15%">나무 수명</th>
-	 		<th>나무 특징</th>
-	 		<th>나무 사진</th>
+	 		<th width="30%">나무 특징</th>
+	 		<th width="40%">나무 사진</th>
 	 	</tr>
 		<tr>
 			<th><%=treename%></th>
