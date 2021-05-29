@@ -71,7 +71,7 @@ public class TreeInfoDAO {
 		TreeInfoVO info = null;
 		try {
 			conn = getC();
-			stmt = conn.prepareStatement("select treename, treelife, treepoint from treeinfo where treename = ?");
+			stmt = conn.prepareStatement("select * from treeinfo where treename = ?");
 			stmt.setString(1, name);
 			rs = stmt.executeQuery();
 			info = new TreeInfoVO();
@@ -79,6 +79,7 @@ public class TreeInfoDAO {
 				info.setTreename(rs.getString("treename"));
 				info.setTreelife(rs.getString("treelife"));
 				info.setTreePoint(rs.getString("treepoint"));
+				info.setTreePhoto(rs.getString("treePhoto"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -90,22 +91,23 @@ public class TreeInfoDAO {
 	}
 	
 	public int addTree(TreeInfoVO vo) {
-		
 		int cnt = 0;
 		try {
 			conn = getC();
-			stmt = conn.prepareStatement("insert into treeinfo(treename, treelife, treepoint) values(?,?,?)");
+			stmt = conn.prepareStatement("insert into treeinfo values(?,?,?,?)");
 			stmt.setString(1, vo.getTreename());
 			stmt.setString(2, vo.getTreelife());
 			stmt.setString(3, vo.getTreePoint());
+			stmt.setString(4, vo.getTreePhoto());
+			
 			cnt = stmt.executeUpdate();
-			if(cnt > 0)
-				conn.commit();
-			else
+			if(cnt < 0)
 				conn.rollback();
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("tree 등록하다 오류남.");
+		}finally {
+			closeDB();
 		}
 		
 		return cnt;

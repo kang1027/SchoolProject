@@ -19,7 +19,7 @@
 	<table border="1">
 	<%for(TreeInfoVO vo : list){%>
 		<tr>
-			<td><a href="TreeInfo.jsp?treename=<%=vo.getTreename()%>"><%=vo.getTreename()%></a></td>
+			<td><a href="treeInfo.jsp?treename=<%=vo.getTreename()%>"><%=vo.getTreename()%></a></td>
 		</tr>
 	<%} %>
 	</table>

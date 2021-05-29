@@ -34,6 +34,8 @@
 	</form>
 	<%
 	if(isSearch){
+		if(blogs.size() == 0)
+			out.println("<script>alert('없는 결과입니다. 다시 입력해주세요.')</script>");
 		String[] fields = {"title", "link", "description"};
 		for(int i = 0; i < blogs.size(); i++){
 			out.println(blogs.get(i).get("title")+"<br>");

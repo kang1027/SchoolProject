@@ -32,6 +32,7 @@
 				<div id="id">
 					<input type="text" name="inId" placeholder="아이디를 입력해주세요."
 						id="inputid" autofocus>
+					<input type="button" onclick="CheckId()" value="아이디 중복확인">
 				</div>
 				<br>
 				<div id="pw">
@@ -63,6 +64,10 @@
 		<input type="submit" value="회원가입" id="insertbtn">
 	</form>
 	<script>
+		function CheckId(){
+			var id = document.getElementById("inputid").value;
+			<%-- 아이디 중복확인 해주삼. --%>
+		}
 		function checkValue() {
 
 			if (document.getElementById("inputid").value === "") {

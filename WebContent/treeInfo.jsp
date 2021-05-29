@@ -24,11 +24,14 @@
 	 		<th width="15%">나무 이름</th>
 	 		<th width="15%">나무 수명</th>
 	 		<th>나무 특징</th>
+	 		<th>나무 사진</th>
 	 	</tr>
 		<tr>
 			<th><%=treename%></th>
 			<th><%=info.getTreelife()%>년</th>
 			<th><%=info.getTreePoint()%></th>
+			<%String path = request.getContextPath();%>
+			<th><img src="<%=path+"/uploadImage/"+info.getTreePhoto() %>" style="height : 300px;"></th>
 		</tr>
 	</table>
 </body>
