@@ -1,4 +1,4 @@
-package TreeVO;
+package VO;
 
 public class TreeInfoVO {
 	String treename;

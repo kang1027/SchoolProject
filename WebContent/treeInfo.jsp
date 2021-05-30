@@ -1,5 +1,5 @@
-<%@page import="TreeVO.TreeInfoVO"%>
-<%@page import="TreeDAO.TreeInfoDAO"%>
+<%@page import="VO.TreeInfoVO"%>
+<%@page import="DAO.TreeInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%

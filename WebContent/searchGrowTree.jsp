@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
     <%
     	request.setCharacterEncoding("utf-8");
-    	String word = request.getParameter("word");
+    	String word = request.getParameter("word") + " 키우기";
     	List<Map<String, Object>> blogs = null;
     	boolean isSearch = false;
     	if(word == null || word.equals(""))
@@ -15,7 +15,6 @@
     	    	blogs = blog.getBlog(word);
     	    	isSearch = true;
     	}
-    	
     %>
 <!DOCTYPE html>
 <html>
@@ -28,8 +27,8 @@
 	<%@ include file="header.jsp" %>
 	<%@ include file="menu.jsp" %>
 	
-	<form action="search.jsp">
-		<input type="text" name="word" value="" placeholder="검색할 단어를 입력해주세요.">
+	<form action="searchGrowTree.jsp">
+		<input type="text" name="word" value="" placeholder="키울 나무를 입력해주세요.">
 		<input type="submit" value="검색">
 	</form>
 	<%

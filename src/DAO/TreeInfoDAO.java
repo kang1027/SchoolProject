@@ -1,4 +1,4 @@
-package TreeDAO;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import TreeVO.TreeInfoVO;
+import VO.TreeInfoVO;
+import conn.JDBCConn;
 
 public class TreeInfoDAO {
 	
@@ -24,31 +25,12 @@ public class TreeInfoDAO {
 			instance = new TreeInfoDAO();
 		return instance;
 	}
-	//커넥션풀
-	private static Connection getC() throws Exception {
-		Context init = new InitialContext();
-		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/orcl");
-		Connection conn = ds.getConnection();
-		return conn;
-	}
-	//DB끊기
-	private void closeDB() {
-		try {
-			if(conn != null)
-				conn.close();
-			if(rs != null)
-				rs.close();
-			if(stmt != null)
-				stmt.close();
-		}catch (Exception e) {
-			System.out.println("DB연결 끊다 오류남.");
-		}
-	}
+	
 
 	public ArrayList<TreeInfoVO> getTreeInfoList(){
 		ArrayList<TreeInfoVO> list = null;
 		try {
-			conn = getC();
+			conn = JDBCConn.getC();
 			stmt = conn.prepareStatement("select treename from treeinfo order by treename");
 			rs = stmt.executeQuery();
 			list = new ArrayList<TreeInfoVO>();
@@ -62,7 +44,7 @@ public class TreeInfoDAO {
 			e.printStackTrace();
 			System.out.println("treeList 가져오다 오류");
 		}finally {
-			closeDB();
+			JDBCConn.closeDB(conn, rs, stmt);
 		}
 		return list;
 	}
@@ -70,7 +52,7 @@ public class TreeInfoDAO {
 	public TreeInfoVO getTreeInfo(String name){
 		TreeInfoVO info = null;
 		try {
-			conn = getC();
+			conn = JDBCConn.getC();
 			stmt = conn.prepareStatement("select * from treeinfo where treename = ?");
 			stmt.setString(1, name);
 			rs = stmt.executeQuery();
@@ -85,7 +67,7 @@ public class TreeInfoDAO {
 			e.printStackTrace();
 			System.out.println("treeInfo 가져오다 오류");
 		}finally {
-			closeDB();
+			JDBCConn.closeDB(conn, rs, stmt);
 		}
 		return info;
 	}
@@ -93,7 +75,7 @@ public class TreeInfoDAO {
 	public int addTree(TreeInfoVO vo) {
 		int cnt = 0;
 		try {
-			conn = getC();
+			conn = JDBCConn.getC();
 			stmt = conn.prepareStatement("insert into treeinfo values(?,?,?,?)");
 			stmt.setString(1, vo.getTreename());
 			stmt.setString(2, vo.getTreelife());
@@ -107,7 +89,7 @@ public class TreeInfoDAO {
 			e.printStackTrace();
 			System.out.println("tree 등록하다 오류남.");
 		}finally {
-			closeDB();
+			JDBCConn.closeDB(conn, rs, stmt);
 		}
 		
 		return cnt;
