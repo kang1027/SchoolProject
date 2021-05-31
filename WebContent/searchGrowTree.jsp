@@ -33,6 +33,11 @@
 	</form>
 	<%
 	if(isSearch){
+		if(blogs == null)
+		{
+			out.println("<script>alert('당신에게 딱 맞는 곳..'); location.replace('https://0129ambulence.modoo.at/?gclid=Cj0KCQjw78yFBhCZARIsAOxgSx0owyBQ0i3bCPTJ66282U0DORoELL7Dv0oM1QISW_o3PhiD6YdbrbIaAhHyEALw_wcB')</script>");
+			return;
+		}
 		if(blogs.size() == 0)
 			out.println("<script>alert('없는 결과입니다. 다시 입력해주세요.')</script>");
 		String[] fields = {"title", "link", "description"};

@@ -43,7 +43,7 @@
 	<form method="post" action="addUserCtrl.jsp" onsubmit="return checkValue()">
 		<div id="insertform">
 			<h1>회원가입</h1>
-			아이디 : <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요." value="<%=id%>" <%if(checkId){ %> readonly <%}%> autofocus>
+			아이디 : <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요." value="<%=id%>" <%if(checkId){ %> disabled <%}%> autofocus>
 			<input type="button" onclick="CheckId()" value="아이디 중복확인" <%if(checkId){ %> disabled <%}%>>
 			<br><br>
 			비밀번호 : <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요.">
@@ -149,6 +149,7 @@
 				alert('아이디 중복확인을 해주세요.');
 				return false;
 			}
+			document.getElementById("id").disabled = false;
 			return true;
 		}
 	</script>

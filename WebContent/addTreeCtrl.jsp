@@ -23,9 +23,9 @@
 	int cnt = 0;
 	
 	try{
-		Enumeration files = multi.getFileNames();
-		while(files.hasMoreElements()){
-			String file1 = (String) files.nextElement(); // form input태그 이름
+		Enumeration files = multi.getFileNames();	// form에서 input type이 file인 태그의 name의 값
+		while(files.hasMoreElements()){	
+			String file1 = (String) files.nextElement(); // form input태그 name
 			originalName1 = multi.getOriginalFileName(file1); // 실제 파일 이름
 			fileName1 = multi.getFilesystemName(file1); // 중복처리
 			fileType = multi.getContentType(file1);	// 파일 타입 정보

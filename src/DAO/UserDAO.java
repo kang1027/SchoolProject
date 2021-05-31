@@ -64,4 +64,31 @@ public class UserDAO {
 		
 		return state;
 	}
+	
+	public String[] tryLogin(String id, String pw) {
+		String [] userInfoArr = new String[3]; // index 0 = state -1은 아이디 없음. -2는 비밀번호 다름. 1은 성공
+		// index 1 = nickname, index 2 = id  
+		
+		try {
+			conn = JDBCConn.getC();
+			stmt = conn.prepareStatement("select userpw, nickname from userinfo where userid=?");
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) 
+				if(pw.equals(rs.getString("userpw"))) {
+					userInfoArr[0] = "1";
+					userInfoArr[1] = rs.getString("nickname");
+					userInfoArr[2] = id;
+				}
+				else userInfoArr[0] = "-2";
+			else userInfoArr[0] = "-1";
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("로그인 시도에서 오류남.");
+		}finally {
+			JDBCConn.closeDB(conn, rs, stmt);
+		}
+		return userInfoArr;
+		
+	}
 }
