@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나무 정보</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>

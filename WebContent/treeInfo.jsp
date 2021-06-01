@@ -13,12 +13,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%=info.getTreename() %>나무 정보</title>
 </head>
 <body>
-	
 	<%@ include file="header.jsp" %>
 	<%@ include file="menu.jsp" %>
+	
+	<a href="updateTree.jsp?name=<%=info.getTreename() %>">나무 수정 / 삭제</a>
+	
 	<table border="1" width="1000px" >
 	 	<tr>
 	 		<th width="15%">나무 이름</th>

@@ -1,27 +1,39 @@
+<%@page import="VO.TreeInfoVO"%>
+<%@page import="DAO.TreeInfoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("name");
+		
+		TreeInfoDAO dao = new TreeInfoDAO();
+		TreeInfoVO vo = dao.getTreeInfo(name);
+		
+	%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>나무 등록</title>
+<title>나무 수정</title>
 </head>
 <body>
 	<%@ include file="header.jsp"%>
 	<%@ include file="menu.jsp"%>
-	<form  method="post" action="addTreeCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
+	<form  method="post" action="updateTreeCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
 		<table border="1">
+			
 			<tr>
 				<th>나무 이름</th>
-				<td><input type="text" name="treename" id="treename" value="" placeholder="나무 이름을 입력해주세요..."></td>
+				
+				<td><input type="text" name="treename" id="treename" value="<%=vo.getTreename() %>" placeholder="나무 이름을 입력해주세요..."></td>
 			</tr>
 			<tr>
 				<th>나무 수명</th>
-				<td><input type="text" name="treelife" id="treelife" value="" placeholder="나무 수명을 입력해주세요..."></td>
+				<td><input type="text" name="treelife" id="treelife" value="<%=vo.getTreelife() %>" placeholder="나무 수명을 입력해주세요..."></td>
 			</tr>
 			<tr>
 				<th>나무 특징</th>
-				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."></textarea></td>
+				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."><%=vo.getTreePoint()%></textarea></td>
 			</tr>
 			<tr>
 				<th>나무사진</th>
@@ -34,7 +46,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th colspan="2"><input type="submit" value="나무 등록하기"></th>
+				<th colspan="2"><input type="submit" value="나무 수정하기"><input type="button" onclick="location.replace('deleteTree.jsp?name=<%=name %>')" value="나무 삭제하기"> <input type="hidden" name="name" value="<%=name %>"></th>
 			</tr>
 		</table>
 	</form>

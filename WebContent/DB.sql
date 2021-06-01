@@ -4,7 +4,6 @@ CREATE TABLE "TREEINFO" (
 	"TREEPOINT"	VARCHAR2(1000)		NULL,
 	"TREEPHOTO"	VARCHAR2(1000)		NULL
 );
-select userid, nickname from userinfo where userid='abc123'
 CREATE TABLE "USERINFO" (
 	"USERID"	VARCHAR2(50)		NOT NULL,
 	"USERPW"	VARCHAR2(30)		NULL,
@@ -14,6 +13,7 @@ CREATE TABLE "USERINFO" (
 );
 CREATE TABLE "TREECORPORATION" (
 	"CPNAME"	VARCHAR2(20)		NOT NULL,
+	/*CPURL 포링키로 참조해야함. erd 다시짜*/
 	"CPURL"	VARCHAR2(500)		NULL,
 	"CPINTRO"	VARCHAR2(2000)		NULL,
 	"CPPHOTO"	VARCHAR2(1000)		NULL,
@@ -21,7 +21,9 @@ CREATE TABLE "TREECORPORATION" (
 );
 CREATE TABLE "TREECAMPAIN" (
 	"TCCODE"	NUMBER(3)		NOT NULL,
+	"TCSTATE"	NUMBER(1)		NOT NULL,
 	"CPNAME"	VARCHAR2(50)		NOT NULL,
+	"TCNAME"	VARCHAR2(50)		NOT NULL,
 	"TCINTRO"	VARCHAR2(2000)		NULL,
 	"TCURL"	VARCHAR2(500)		NULL,
 	"TCCALL"	VARCHAR2(15)		NULL
@@ -61,4 +63,7 @@ INSERT INTO USERINFO VALUES('ZZ','1','서준호','F','SLDRPSRNSEKS');
 INSERT INTO TREECORPORATION VALUES('트리플래닛','https://treepla.net/','나무심는 기업','트리플래닛.JPG','02-512-2492');
 
 /*TREECAMPAIN 가값*/
-INSERT INTO TREECAMPAIN VALUES('001','트리플래닛','강원도 산불 피해하는 거','https://treepla.net/forestfires','02-512-2492');
+INSERT INTO TREECAMPAIN VALUES('001', 1 ,'트리플래닛', '강원 산불피해 복구 숲', '까맣게 타버린 강원의 숲, 까맣게 잊은 당신에게','https://treepla.net/forestfires','02-512-2492');
+
+insert into treecorporation values('환경교육센터','http://www.edutopia.or.kr/node/2200','환경교육센터는 생명, 평화, 참여, 나눔의 가치를 추구합니다.','11','02-735-8677');
+insert into treecampain values(002,1, '환경교육센터','생명의 숲', '생명의숲은 시민의 힘으로 건강한 숲, 지속가능한 사회를 만드는 NGO입니다.','https://booking.naver.com/booking/12/bizes/436992/items/3955687','02-735-3232');
