@@ -18,8 +18,8 @@
 <body>
 	<%@ include file="header.jsp" %>
 	<%@ include file="menu.jsp" %>
-	
-	<a href="updateTree.jsp?name=<%=info.getTreename() %>">나무 수정 / 삭제</a>
+	<%if(!(session.getAttribute("id")==null)){ %><a href="downTreeImage.jsp?downImage=<%=info.getTreePhoto()%>">이미지 다운</a>
+	<a href="updateTree.jsp?name=<%=info.getTreename() %>">나무 수정 / 삭제</a><%} %>
 	
 	<table border="1" width="1000px" >
 	 	<tr>

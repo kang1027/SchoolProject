@@ -1,25 +1,23 @@
 package VO;
 
-public class CampainVO {
+import java.sql.Date;
+
+public class CampaignVO {
 	int tccode;
-	int tcstate;
 	String cpname;
 	String cpurl;
 	String tcname;
 	String tcintro;
 	String tcurl;
 	String tccall;
+	String tcstate;
+	Date tcdate;
+	String tcphoto;
 	public int getTccode() {
 		return tccode;
 	}
 	public void setTccode(int tccode) {
 		this.tccode = tccode;
-	}
-	public int getTcstate() {
-		return tcstate;
-	}
-	public void setTcstate(int tcstate) {
-		this.tcstate = tcstate;
 	}
 	public String getCpname() {
 		return cpname;
@@ -57,11 +55,34 @@ public class CampainVO {
 	public void setTccall(String tccall) {
 		this.tccall = tccall;
 	}
+	public String getTcstate() {
+		return tcstate;
+	}
+	public void setTcstate(String tcstate) {
+		this.tcstate = tcstate;
+	}
+	public Date getTcdate() {
+		return tcdate;
+	}
+	public void setTcdate(Date tcdate) {
+		this.tcdate = tcdate;
+	}
+	public String getTcphoto() {
+		return tcphoto;
+	}
+	public void setTcphoto(String tcphoto) {
+		this.tcphoto = tcphoto;
+	}
 	@Override
 	public String toString() {
-		return "CampainVO [tccode=" + tccode + ", tcstate=" + tcstate + ", cpname=" + cpname + ", tcname=" + tcname
-				+ ", tcintro=" + tcintro + ", tcurl=" + tcurl + ", tccall=" + tccall + "]";
+		return "CampaignVO [tccode=" + tccode + ", cpname=" + cpname + ", cpurl=" + cpurl + ", tcname=" + tcname
+				+ ", tcintro=" + tcintro + ", tcurl=" + tcurl + ", tccall=" + tccall + ", tcstate=" + tcstate
+				+ ", tcdate=" + tcdate +  ", tcphoto=" + tcphoto + "]";
 	}
+	
+	
+	
+	
 	
 	
 }
