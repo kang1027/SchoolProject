@@ -5,18 +5,20 @@
 	pageEncoding="UTF-8"%>
 	<%
 		TreeInfoDAO dao = new TreeInfoDAO();
-		ArrayList<CorporationVO> list = dao.getCorporationList();
+		ArrayList<CorporationVO> list = dao.getCorporationList("");
 	%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>캠페인 등록</title>
+<link rel="stylesheet" href="css/head.css">
+<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp"%>
-	<form  method="post" action="addCampaignCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
+	<div id="padding"></div>
+	<form  method="post" action="addCampaignCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()" >
 		<table border="1">
 			<tr>
 				<th>기업 선택</th>
@@ -67,6 +69,7 @@
 		</table>
 	</form>
 	
+	<%@ include file="footer.jsp" %>
 	<script>
 		function checkV(){
 			var noImage = false;;

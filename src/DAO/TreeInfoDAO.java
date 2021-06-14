@@ -28,17 +28,24 @@ public class TreeInfoDAO {
 	}
 	
 
-	public ArrayList<TreeInfoVO> getTreeInfoList(){
+	public ArrayList<TreeInfoVO> getTreeInfoList(String sort){
 		ArrayList<TreeInfoVO> list = null;
 		try {
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("select treename from treeinfo order by treename");
+			if(sort.equals(""))
+				stmt = conn.prepareStatement("select * from treeinfo order by treecode asc");
+			else if(sort.equals("reverse"))
+				stmt = conn.prepareStatement("select * from treeinfo order by treecode desc");
+			else if(sort.equals("abc")) 
+				stmt = conn.prepareStatement("select * from treeinfo order by treename asc");
+			else if(sort.equals("cba"))
+				stmt = conn.prepareStatement("select * from treeinfo order by treename desc");
 			rs = stmt.executeQuery();
 			list = new ArrayList<TreeInfoVO>();
 			while(rs.next()) {
 				TreeInfoVO vo = new TreeInfoVO();
 				vo.setTreename(rs.getString("treename"));
-				
+				vo.setTreePhoto(rs.getString("treephoto"));
 				list.add(vo);
 			}
 		}catch (Exception e) {
@@ -63,6 +70,17 @@ public class TreeInfoDAO {
 				info.setTreelife(rs.getString("treelife"));
 				info.setTreePoint(rs.getString("treepoint"));
 				info.setTreePhoto(rs.getString("treePhoto"));
+				info.setTreearea(rs.getString("treearea"));
+				info.setTreeclass1(rs.getString("treeclass1"));
+				info.setTreeclass2(rs.getString("treeclass2"));
+				info.setTreeclass3(rs.getString("treeclass3"));
+				info.setTreeclass4(rs.getString("treeclass4"));
+				info.setTreeclass5(rs.getString("treeclass5"));
+				info.setTreeclass6(rs.getString("treeclass6"));
+				info.setTreeclass7(rs.getString("treeclass7"));
+				info.setTreeintro(rs.getString("treeintro"));
+				System.out.println(rs.getString("treeintro"));
+				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -72,16 +90,49 @@ public class TreeInfoDAO {
 		}
 		return info;
 	}
+	public int maxTree() {
+		int cnt = 0;
+		try {
+			conn = JDBCConn.getC();
+			stmt = conn.prepareStatement("select nvl(count(*),0) treecode from treeinfo");
+			rs = stmt.executeQuery();
+			if(rs.next())
+				cnt = rs.getInt("treecode");
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("tree개수 가져오다 오류남.");
+		}finally {
+			JDBCConn.closeDB(conn, rs, stmt);
+		}
+		
+		return cnt;
+	
+	}
 	
 	public int addTree(TreeInfoVO vo) {
 		int cnt = 0;
 		try {
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("insert into treeinfo values(?,?,?,?)");
-			stmt.setString(1, vo.getTreename());
-			stmt.setString(2, vo.getTreelife());
-			stmt.setString(3, vo.getTreePoint());
-			stmt.setString(4, vo.getTreePhoto());
+			stmt = conn.prepareStatement("select nvl(max(treecode),0)+1 treecode from treeinfo");
+			rs = stmt.executeQuery();
+			int max = 0;
+			if(rs.next())
+				max = rs.getInt("treecode");
+			stmt = conn.prepareStatement("insert into treeinfo values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			stmt.setInt(1, max);	
+			stmt.setString(2, vo.getTreename());
+			stmt.setString(3, vo.getTreelife());
+			stmt.setString(4, vo.getTreearea());
+			stmt.setString(5, vo.getTreeclass1());
+			stmt.setString(6, vo.getTreeclass2());
+			stmt.setString(7, vo.getTreeclass3());
+			stmt.setString(8, vo.getTreeclass4());
+			stmt.setString(9, vo.getTreeclass5());
+			stmt.setString(10, vo.getTreeclass6());
+			stmt.setString(11, vo.getTreeclass7());
+			stmt.setString(12, vo.getTreeintro());
+			stmt.setString(13, vo.getTreePoint());
+			stmt.setString(14, vo.getTreePhoto());
 			
 			cnt = stmt.executeUpdate();
 			if(cnt < 0)
@@ -124,12 +175,17 @@ public class TreeInfoDAO {
 		return state;
 	}
 	
-	public ArrayList<CampaignVO> getCampaignList(){
+	public ArrayList<CampaignVO> getCampaignList(String sort){
 		ArrayList<CampaignVO> list = null;
 		
 		try {
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("select * from treecampaign");
+			if(sort.equals(""))
+				stmt = conn.prepareStatement("select * from treecampaign");
+			else if(sort.equals("able"))
+				stmt = conn.prepareStatement("select * from treecampaign where tcstate=1");
+			else if(sort.equals("unable"))
+				stmt = conn.prepareStatement("select * from treecampaign where tcstate=-1");
 			rs = stmt.executeQuery();
 			list = new ArrayList<CampaignVO>();
 			while(rs.next()) {
@@ -170,12 +226,21 @@ public class TreeInfoDAO {
 		
 		try {
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("update treeinfo set treename=?, treelife=?, treepoint=?, treephoto=? where treename=?");
+			stmt = conn.prepareStatement("update treeinfo set treename=?, treelife=?, treepoint=?, treeintro=?, treearea=?, treeclass1=?, treeclass2=?, treeclass3=?, treeclass4=?, treeclass5=?, treeclass6=?, treeclass7=?, treephoto=? where treename=?");
 			stmt.setString(1, vo.getTreename());
 			stmt.setString(2, vo.getTreelife());
 			stmt.setString(3, vo.getTreePoint());
-			stmt.setString(4, vo.getTreePhoto());
-			stmt.setString(5, treename);
+			stmt.setString(4, vo.getTreeintro());
+			stmt.setString(5, vo.getTreearea());
+			stmt.setString(6, vo.getTreeclass1());
+			stmt.setString(7, vo.getTreeclass2());
+			stmt.setString(8, vo.getTreeclass3());
+			stmt.setString(9, vo.getTreeclass4());
+			stmt.setString(10, vo.getTreeclass5());
+			stmt.setString(11, vo.getTreeclass6());
+			stmt.setString(12, vo.getTreeclass7());
+			stmt.setString(13, vo.getTreePhoto());
+			stmt.setString(14, treename);
 			state = stmt.executeUpdate();
 			System.out.println(vo);
 			if(state > 0)
@@ -214,11 +279,14 @@ public class TreeInfoDAO {
 		return state;
 	}
 	
-	public ArrayList<CorporationVO> getCorporationList(){
+	public ArrayList<CorporationVO> getCorporationList(String sort){
 		ArrayList<CorporationVO> list = null;
 		try {
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("select * from treecorporation");
+			if(sort.equals(""))
+				stmt = conn.prepareStatement("select * from treecorporation order by cpname asc");
+			else if(sort.equals("cba"))
+				stmt = conn.prepareStatement("select * from treecorporation order by cpname desc");
 			rs = stmt.executeQuery();
 			list = new ArrayList<CorporationVO>();
 			while(rs.next()) {
@@ -239,7 +307,24 @@ public class TreeInfoDAO {
 		}
 		return list;
 	}
+	public int maxCorporation() {
+		int cnt = 0;
+		try {
+			conn = JDBCConn.getC();
+			stmt = conn.prepareStatement("select nvl(count(*),0) cpcode from treecorporation");
+			rs = stmt.executeQuery();
+			if(rs.next())
+				cnt = rs.getInt("cpcode");
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("corporation개수 가져오다 오류남.");
+		}finally {
+			JDBCConn.closeDB(conn, rs, stmt);
+		}
+		
+		return cnt;
 	
+	}
 	public int addCampaign(CampaignVO vo) {
 		int state = 0;
 		
@@ -272,6 +357,42 @@ public class TreeInfoDAO {
 		return state;
 	}
 	
+	public int maxCampaign() {
+		int cnt = 0;
+	try {
+		conn = JDBCConn.getC();
+		stmt = conn.prepareStatement("select nvl(count(*),0) tccode from treecampaign");
+		rs = stmt.executeQuery();
+		if(rs.next())
+			cnt = rs.getInt("tccode");
+	}catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("캠페인 개수 오류남.");
+	}finally {
+		JDBCConn.closeDB(conn, rs, stmt);
+	}
+		return cnt;
+	}
+	
+	public int ableCampaign() {
+		int cnt = 0;
+	try {
+		conn = JDBCConn.getC();
+		stmt = conn.prepareStatement("select nvl(count(*),0) tccode from treecampaign where tcstate=1");
+		rs = stmt.executeQuery();
+		if(rs.next())
+			cnt = rs.getInt("tccode");
+	}catch (Exception e) {
+		e.printStackTrace();
+		System.out.println("캠페인 개수 오류남.");
+	}finally {
+		JDBCConn.closeDB(conn, rs, stmt);
+	}
+	
+	return cnt;
+
+		
+	}
 	public int deleteCampaign(int code) {
 		int state = 0;
 		

@@ -15,16 +15,16 @@
 <head>
 <meta charset="UTF-8">
 <title>나무 수정</title>
+<link rel="stylesheet" href="css/head.css">
+<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp"%>
+	<div id="padding"></div>
 	<form  method="post" action="updateTreeCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
 		<table border="1">
-			
 			<tr>
 				<th>나무 이름</th>
-				
 				<td><input type="text" name="treename" id="treename" value="<%=vo.getTreename() %>" placeholder="나무 이름을 입력해주세요..."></td>
 			</tr>
 			<tr>
@@ -32,8 +32,25 @@
 				<td><input type="text" name="treelife" id="treelife" value="<%=vo.getTreelife() %>" placeholder="나무 수명을 입력해주세요..."></td>
 			</tr>
 			<tr>
+				<th>나무 분포 지역<small>',' 로 구분</small></th>
+				<td><input type="text" name="treearea" id="treearea" value="<%=vo.getTreearea() %>" placeholder="나무 분포 지역을 입력해주세요..."></td>
+			</tr>
+			<tr>
+				<th>나무 소개</th>
+				<td><textarea name="treeintro" id="treeintro" name="treeintro" cols="30" rows="3" placeholder="나무 소개를 간략히 입력해주세요..."><%=vo.getTreeintro() %></textarea></td>
+			</tr>
+			<tr>
 				<th>나무 특징</th>
-				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."><%=vo.getTreePoint()%></textarea></td>
+				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."><%=vo.getTreePoint() %></textarea></td>
+			</tr>
+				<tr><td rowspan="8">나무 분류<small>공백 가능</small></td></tr>
+				<tr><td>계 : <input type="text" id="treeclass1" name="treeclass1" value="<%=vo.getTreeclass1() %>" placeholder="분류 '계'를 입력해주세요."></td></tr>
+				<tr><td>문 : <input type="text" id="treeclass2" name="treeclass2" value="<%=vo.getTreeclass2() %>" placeholder="분류 '문'를 입력해주세요."></td></tr>
+				<tr><td>강 : <input type="text" id="treeclass3" name="treeclass3" value="<%=vo.getTreeclass3() %>" placeholder="분류 '강'를 입력해주세요."></td></tr>
+				<tr><td>목 : <input type="text" id="treeclass4" name="treeclass4" value="<%=vo.getTreeclass4() %>" placeholder="분류 '목'를 입력해주세요."></td></tr>
+				<tr><td>과 : <input type="text" id="treeclass5" name="treeclass5" value="<%=vo.getTreeclass5() %>" placeholder="분류 '과'를 입력해주세요."></td></tr>
+				<tr><td>속 : <input type="text" id="treeclass6" name="treeclass6" value="<%=vo.getTreeclass6() %>" placeholder="분류 '속'를 입력해주세요."></td></tr>
+				<tr><td>종 : <input type="text" id="treeclass7" name="treeclass7" value="<%=vo.getTreeclass7() %>" placeholder="분류 '종'를 입력해주세요."></td>
 			</tr>
 			<tr>
 				<th>나무사진</th>
@@ -46,11 +63,12 @@
 				</td>
 			</tr>
 			<tr>
-				<th colspan="2"><input type="submit" value="나무 수정하기"><input type="button" onclick="location.replace('deleteTree.jsp?name=<%=name %>')" value="나무 삭제하기"> <input type="hidden" name="name" value="<%=name %>"></th>
+				<th colspan="2"><input type="submit" value="나무 수정하기"><input type="hidden" name="name" value="<%=name%>"></th>
 			</tr>
 		</table>
 	</form>
 	
+	<%@ include file="footer.jsp" %>
 	<script>
 		function checkV(){
 			var noImage = false;;

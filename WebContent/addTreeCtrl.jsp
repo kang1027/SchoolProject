@@ -35,6 +35,16 @@
 			vo.setTreename(multi.getParameter("treename"));
 			vo.setTreelife(multi.getParameter("treelife"));
 			vo.setTreePoint(multi.getParameter("treepoint"));
+			vo.setTreeintro(multi.getParameter("treeintro"));
+			vo.setTreearea(multi.getParameter("treearea"));
+			vo.setTreeclass1(multi.getParameter("treeclass1"));
+			vo.setTreeclass2(multi.getParameter("treeclass2"));
+			vo.setTreeclass3(multi.getParameter("treeclass3"));
+			vo.setTreeclass4(multi.getParameter("treeclass4"));
+			vo.setTreeclass5(multi.getParameter("treeclass5"));
+			vo.setTreeclass6(multi.getParameter("treeclass6"));
+			vo.setTreeclass7(multi.getParameter("treeclass7"));
+			vo.setTreeclass7(multi.getParameter("treeclass7"));
 			vo.setTreePhoto(fileName1);
 			cnt = dao.addTree(vo);
 		}

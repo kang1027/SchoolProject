@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+@font-face {
+		font-family: "main";
+		src: url("../font/MAIN.ttf");
+	}
+@font-face {
+		font-family: "content";
+		src: url("../font/CONTENT.ttf");
+	}
+body{margin : 0; padding : 0;}
+#h_logo{
+	width : 150px;
+	text-align : center;
+	font-size : 1.5em;
+	float : left;
+	padding : 10px;
+	padding-top : 20px;
+	transition : 0.5s;
+	font-family : "main";
+}
+header{height : 50px; position : fixed; width : 100%; z-index : 1;}
+#header-inner{width : 100%;}
+#header-inner a{text-decoration : none; color : white;}
+#sub_back{
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 110px;
+	position : absolute;
+	background-color : white;
+	display : none;
+	z-index : -1;
+}
+#nickname, #login{
+	
+	float : right; margin-left : 30px;
+	margin-top : 20px;
+	color : black;
+	font-family : "content";
+	
+}
+#header-inner{position : absolute;}
+
+
+#menu{
+	position : fixed;
+	list-style : none;
+	margin-top : 66px;
+	padding : 0;
+	width : 650px;
+	font-family : "content";
+	z-index : 2;
+}
+#menu li{
+	width : 20%;
+	float : left;
+	margin-top : 10px;
+	box-sizing : border-box;
+}
+#menu li > a{
+	display : block;
+	text-align : center;
+	height : 33px;
+	transition : 0.5s;
+	color : white;
+}
+#menu li > a:hover{
+	color : gray;
+	opacity : 0.5;
+
+}
+#sub-menu{
+	background-color : white;
+	width : 150%;
+	opacity : 0;
+	border : 1px solid #d6d6d6;
+}
+#sub-menu a{
+	display : block;
+	padding : 10px;
+	transition : 0.5s;
+	color : black;
+	padding-left : 20px;
+	visibility : hidden;
+}
+
+#sub-menu > a:hover{
+	color : white;
+	background-color : #2db5ff;
+}
+#slide{
+	width : 100%;
+	height : 900px;
+	overflow : hidden;
+	position : relative;
+	border : 1px solid black;
+	font-size : 0;
+}
+#slide > div{
+	top : 0;
+	left : 0;
+	height : 900px;
+	width : 9900px;
+	position : absolute;
+	animation : 25s slides infinite linear;
+}
+@keyframes slides{
+	0%{left : 0;}
+	15%{left : 0;}
+	20%{left : -1980px;}
+	35%{left : -1980px;}
+	40%{left : -3960px;}
+	55%{left : -3960px;}
+	60%{left : -5940px;}
+	75%{left : -5940px;}
+	80%{left : -7920px;}
+	100%{left : -7920px;}
+} 
+#slide img{
+	width : 1980px;
+	height : 100%;
+}
+#contents > h1{
+	font-family : "main"; 
+	text-align : center;
+	font-size : 2.5em;
+} 
+#TreeCnt, #CampaignCnt, #CorporationCnt{
+	float : left;
+	width : 30%;
+	margin-left : 50px;
+	text-align : center;
+	border : 1px solid #f0f0f0;;
+	box-sizing : border-box;
+}
+#TreeCnt a, #CampaignCnt a, #CorporationCnt a{
+	color : #00bfff;
+	text-decoration : none;
+}
+#Tree, #Campaign, #Corporation{
+	float : left;
+	width : 20%;
+	height : 300px;
+	margin-left : 50px;
+	text-align : center;
+	border : 1px solid black;
+	box-sizing : border-box;
+}
+#Tree img, #Campaign img, #Corporation img{
+	transition : 0.5s;
+}
+#Tree img:hover, #Campaign img:hover, #Corporation img:hover{
+	opacity : 0.5;
+
+}
+#Tree{margin-left : 300px;}
+#TreeInfo{
+	clear : both;
+	margin-top : 300px;
+	width : 100%;
+	height : 400px;
+	position : relative;
+	z-index : 0;
+}
+#TreeInfo h1{
+	font-family : "main"; 
+	font-size : 2.5em;
+	float : left;
+	margin-left : 50px;
+	height : 900px;
+}
+#TreeInfoImg{
+	margin-left : 200px;
+}
+#TreeInfoImg img{
+	margin-left : 200px;
+	transition : 0.5s;
+}
+#TreeInfoImg img:hover{
+	opacity : 0.7;
+}
+#thirdTree, #fourTree{
+	margin-top : 120px;	
+}
+#firstTree, #secondTree{
+	margin-top : -50px;
+}
+#TreeInfoImg a{
+	position : relative;
+}
+#TreeInfoImg p{
+	position : absolute;
+	top : 0;
+	left : 28%;
+	font-family : "content";
+	color : black;
+	padding-top : 20px;
+	font-weight : bolder;
+	color : #323232;
+	line-height : 25px;
+}
+#price{
+	color : #00c7ff;
+}
+#point1{
+	padding : 7px;
+	font-size : 10px;
+	color : white;
+	background-color : #ffa74a;
+}
+#point2{
+	padding : 7px;
+	font-size : 10px;
+	color : white;
+	background-color : #0070ff;	
+}
+#point3{
+	padding : 7px 12px;
+	font-size : 12px;
+	color : red;
+	border : 1px solid red;
+	
+}
+
+#padding{
+margin-top : 850px;}
+
+footer{clear : both; text-align : center;line-height : 30px; font-size : 0.8em;}

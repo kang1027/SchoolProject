@@ -33,11 +33,11 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" href="css/page.css">
 </head>
 
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp" %>
 
 
 	<form method="post" action="addUserCtrl.jsp" onsubmit="return checkValue()">
@@ -67,6 +67,7 @@
 			<input type="submit" value="회원가입" id="insertbtn">
 		</div><br>
 	</form>
+	<%@ include file="footer.jsp" %>
 	<script>
 	var isCheck = false;
 	// 새로고침 시 파라미터 없앰.

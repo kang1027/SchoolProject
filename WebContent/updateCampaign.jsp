@@ -17,10 +17,10 @@
 <head>
 <meta charset="UTF-8">
 <title>캠페인 등록</title>
+<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp"%>
 	<form  method="post" action="updateCampaignCtrl.jsp" onsubmit="return checkV()">
 		<table border="1">
 			<tr>
@@ -62,6 +62,7 @@
 		</table>
 	</form>
 	
+	<%@ include file="footer.jsp" %>
 	<script>
 	window.onload=function(){
 		for(var i = 0; i < document.getElementById("cpname").length; i++)

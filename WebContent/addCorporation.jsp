@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 등록</title>
+<link rel="stylesheet" href="css/head.css">
+<link rel="stylesheet" href="css/page.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp"%>
+	<div id="padding"></div>
 	<form  method="post" action="addCorporationCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
 		<table border="1">
 			<tr>
@@ -43,6 +45,7 @@
 		</table>
 	</form>
 	
+	<%@ include file="footer.jsp" %>
 	<script>
 		function checkV(){
 			var noImage = false;;

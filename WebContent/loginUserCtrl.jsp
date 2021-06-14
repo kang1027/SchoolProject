@@ -9,7 +9,7 @@
     	UserDAO dao = new UserDAO();
     	String[] state = dao.tryLogin(id, pw);
     	if(state[0].equals("1")){
-    		out.println("<script>alert('로그인 성공'); location.replace('index.jsp');</script>");
+    		out.println("<script>location.replace('index.jsp');</script>");
 			session.setAttribute("nickname", state[1]);   		
 			session.setAttribute("id", state[2]);
     	}

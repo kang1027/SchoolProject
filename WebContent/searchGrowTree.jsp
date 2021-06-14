@@ -33,24 +33,82 @@
 <head>
 <meta charset="UTF-8">
 <title>키서치</title>
+<link rel="stylesheet" href="css/head.css">
+<link rel="stylesheet" href="css/page.css">
 <style>
 	#serachTable{
 		width : 600px;
 		height : 400px;
 		margin : auto;
+		border : none;
+	}
+	tr{border : none;}
+	tr:last-child th{border : none;}
+	tr:first-child{
+		height : 50px;
+	}
+	th{font-family : "content";}
+	#currpage{float : right; padding-right : 10px;}
+	#searchResultText{
+		padding-left : 100px;
 	}
 	#serachTable img{
 		width : 30px;
 	}
+	#search{
+		text-align : center;
+		height : 40px;
+		width : 400px;
+		border : 1px solid #00d2ff;
+		background : white;
+		margin : auto;
+	}
+	#word{
+		font-size : 16px;
+		width : 325px;
+		padding : 10px;
+		border : 0;
+		outline : none;
+		float : left;
+	}
+	#submit{
+		width : 50px;
+		height : 100%;
+		border : 0px;
+		background : #00d2ff;
+		outline : none;
+		float : right;
+		color : white;
+		cursor : pointer;
+	}
+	#SearchText{
+	margin-bottom : 70px;
+	margin-left : 15px;
+	font-family : "main";
+	font-size : 1.2em;
+	line-height : 60px;
+	
+}
+hr{
+border : 1px solid #e0e0e0;
+margin-bottom : 70px;}
+
 </style>
 </head>
 <body>
 
 	<%@ include file="header.jsp" %>
-	<%@ include file="menu.jsp" %>
+	<div id="padding"></div>
+	<div id="SearchText">
+		<h1>내 나무는 어떻게 키워야 할까?<br>그럴땐 키서치</h1>
+	</div>
+	<hr>
+	
 	<form action="searchGrowTree.jsp" onsubmit="return checkV()">
-		<input type="text" id="word" name="word" value="" placeholder="키울 나무를 입력해주세요.">
-		<input type="submit" value="검색">
+		<div id="search">
+			<input type="text" id="word" name="word" value="" placeholder="키울 나무를 입력해주세요.">
+			<input type="submit" id="submit" value="검색">
+		</div>
 	</form>
 	<br><br>
 	<%
@@ -65,7 +123,7 @@
 		else{
 			String[] fields = {"title", "link", "description"};
 			out.println("<table border='1px' id='serachTable'");
-			out.println("<tr><th colspan='3'>"+word+" 검색 결과입니다. 현재 페이지 : "+currPage +"</th></tr>");
+			out.println("<tr><th colspan='3'><span id='searchResultText'>"+word+" 검색 결과입니다.</span> <span id='currpage'>현재 페이지 : "+currPage +"</span></th></tr>");
 			out.println("<tr><th width='20%'>제목</th>");
 			out.println("<th width='70%'>내용</th>");
 			out.println("<th width='10%'>포탈</th></tr>");
@@ -90,6 +148,7 @@
 		
 	}
 	%>
+	<%@ include file="footer.jsp" %>
 <script>
 	function movePage(num){
 		var nextPage = <%=currPage+1%>;

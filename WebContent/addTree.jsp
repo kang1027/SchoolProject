@@ -5,10 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>나무 등록</title>
+<link rel="stylesheet" href="css/head.css">
+<link rel="stylesheet" href="css/page.css">
+<style>
+	
+</style>
 </head>
 <body>
 	<%@ include file="header.jsp"%>
-	<%@ include file="menu.jsp"%>
+		<div id="padding"></div>
 	<form  method="post" action="addTreeCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
 		<table border="1">
 			<tr>
@@ -20,8 +25,25 @@
 				<td><input type="text" name="treelife" id="treelife" value="" placeholder="나무 수명을 입력해주세요..."></td>
 			</tr>
 			<tr>
+				<th>나무 분포 지역<small>',' 로 구분</small></th>
+				<td><input type="text" name="treearea" id="treearea" value="" placeholder="나무 분포 지역을 입력해주세요..."></td>
+			</tr>
+			<tr>
+				<th>나무 소개</th>
+				<td><textarea name="treeintro" id="treeintro" name="treeintro" cols="30" rows="3" placeholder="나무 소개를 간략히 입력해주세요..."></textarea></td>
+			</tr>
+			<tr>
 				<th>나무 특징</th>
 				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."></textarea></td>
+			</tr>
+				<tr><td rowspan="8">나무 분류<small>공백 가능</small></td></tr>
+				<tr><td>계 : <input type="text" id="treeclass1" name="treeclass1" placeholder="분류 '계'를 입력해주세요."></td></tr>
+				<tr><td>문 : <input type="text" id="treeclass2" name="treeclass2" placeholder="분류 '문'를 입력해주세요."></td></tr>
+				<tr><td>강 : <input type="text" id="treeclass3" name="treeclass3" placeholder="분류 '강'를 입력해주세요."></td></tr>
+				<tr><td>목 : <input type="text" id="treeclass4" name="treeclass4" placeholder="분류 '목'를 입력해주세요."></td></tr>
+				<tr><td>과 : <input type="text" id="treeclass5" name="treeclass5" placeholder="분류 '과'를 입력해주세요."></td></tr>
+				<tr><td>속 : <input type="text" id="treeclass6" name="treeclass6" placeholder="분류 '속'를 입력해주세요."></td></tr>
+				<tr><td>종 : <input type="text" id="treeclass7" name="treeclass7" placeholder="분류 '종'를 입력해주세요."></td>
 			</tr>
 			<tr>
 				<th>나무사진</th>
@@ -38,6 +60,7 @@
 			</tr>
 		</table>
 	</form>
+	<%@ include file="footer.jsp" %>
 	
 	<script>
 		function checkV(){
@@ -52,15 +75,24 @@
 				document.getElementById('treelife').focus();
 				return false;
 			}
+			if(document.getElementById('treearea').value==""){
+				alert('나무 분포 지역을 입력해주세요.');
+				document.getElementById('treearea').focus();
+				return false;
+			}
 			if(document.getElementById('treepoint').value==""){
 				alert('나무특징을 입력해주세요.');
 				document.getElementById('treepoint').focus();
 				return false;
 			}
+		
+			
+			
 			if(document.getElementById('imageSelector').value == ""){
 				alert('나무 사진을 등록해주세요.');
 				return false;
 			}
+			
 			return true;
 		}
 		var validateType = function(img){
