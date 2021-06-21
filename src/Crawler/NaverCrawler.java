@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,9 +46,10 @@ public class NaverCrawler {
 		return result;
 	}
 
-	/** * 결과를 읽는다 * * @param body * @return */
-	public String readBody(InputStream body) {
-		InputStreamReader streamReader = new InputStreamReader(body);
+	/** * 결과를 읽는다 * * @param body * @return 
+	 * @throws UnsupportedEncodingException */
+	public String readBody(InputStream body) throws UnsupportedEncodingException {
+		InputStreamReader streamReader = new InputStreamReader(body,"UTF-8");
 
 		try (BufferedReader lineReader = new BufferedReader(streamReader)) {
 			StringBuilder responseBody = new StringBuilder();
