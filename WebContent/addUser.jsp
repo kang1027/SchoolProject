@@ -33,7 +33,62 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="css/page.css">
+<link rel="stylesheet" href="css/head.css">
+<style>
+	h1{
+		font-family : "main";
+		margin-bottom : 50px;
+	}
+	#insertform{
+		margin : auto;
+		text-align : center;
+		border : 1px solid black;
+		padding : 30px;
+		border-radius : 25px;
+		width : 600px;
+	}
+	#id, #pw, #cpw, #nickName, #name, #capcha{
+		font-size : 16px;
+		padding : 10px;
+		outline : none;
+		border : 1px solid #00d2ff;
+	}
+	#submit{
+		width : 150px;
+		border-radius : 10px;
+		padding : 10px;
+		font-size : 14px;
+		border : 0px;
+		background-color : #00d2ff;
+		outline : none;
+		color : white;
+		cursor : pointer;
+		transition : 0.2s;
+	}
+	#submit:hover{
+		background-color : #00a6ff;
+	}
+	form a{
+		padding : 10px;
+		width : 70px;
+		text-decoration : none;
+		color : black;
+		transition : 0.2s;
+		border-bottom : 1px solid black;
+	}
+	form a:hover{
+		background-color : #00a6ff;	
+		border : none;
+	}
+	#checkId{
+		position : absolute;
+		margin-left : 30px;
+		margin-top : 10px;
+	}
+	#capcha{
+		margin-bottom : 15px;
+	}
+</style>
 </head>
 
 <body>
@@ -43,24 +98,23 @@
 	<form method="post" action="addUserCtrl.jsp" onsubmit="return checkValue()">
 		<div id="insertform">
 			<h1>회원가입</h1>
-			아이디 : <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요." value="<%=id%>" <%if(checkId){ %> disabled <%}%> autofocus>
-			<input type="button" onclick="CheckId()" value="아이디 중복확인" <%if(checkId){ %> disabled <%}%>>
+			<input type="text" name="id" id="id" placeholder="아이디를 입력해주세요." value="<%=id%>" <%if(checkId){ %> disabled <%}%> autofocus>
+			<input type="button" onclick="CheckId()" id="checkId" value="아이디 중복확인" <%if(checkId){ %> disabled <%}%>>
 			<br><br>
-			비밀번호 : <input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요.">
+			<input type="password" name="pw" id="pw" placeholder="비밀번호를 입력해주세요.">
 			<br><br>
-			비밀번호 확인 : <input type="password" id="cpw" placeholder="비밀번호를 다시 입력해주세요.">
+			<input type="password" id="cpw" placeholder="비밀번호를 다시 입력해주세요.">
 			<br><br>
-			이름 : <input type="text" name="name" id="name" placeholder="이름을 입력해주세요.">
+			<input type="text" name="name" id="name" placeholder="이름을 입력해주세요.">
 			<br><br>
-			성별 : 
 			<label for="m">남</label>
 			<input type="radio" name="gender" id="m" value="m">
 			<label for="f">여</label>
 			<input type="radio" name="gender" id="f" value="f">
 			<br> <br>
-			닉네임 : <input type="text" name="nickName" id="nickName" placeholder="닉네임을 입력해주세요.">
+			<input type="text" name="nickName" id="nickName" placeholder="닉네임을 입력해주세요.">
 			<br><br>
-			보안문자 : <br><br>
+			보안문자 <br><br>
 			<iframe src="https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=<%=imageKey %>" style="width : 200px; height : 90px"></iframe>
 			<br>
 			<input type="text" id="capcha" placeholder="보안문자를 입력해주세요..."><br>
@@ -77,7 +131,7 @@
 				history.replaceState({}, null, location.pathname);
 			}
 		}
-	
+		
 		function CheckId(){
 			if (document.getElementById("id").value === "") {
 				alert('아이디가 입력되지 않았습니다');

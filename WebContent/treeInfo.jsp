@@ -15,7 +15,6 @@
 <head>
 <meta charset="UTF-8">
 <title><%=info.getTreename() %>나무 정보</title>
-<link rel="stylesheet" href="css/page.css">
 <link rel="stylesheet" href="css/head.css">
 <style>
 @font-face{
@@ -41,11 +40,12 @@ margin : 20px;
 #h p a{text-decoration : none; color : black; border : 1px solid black; padding : 3px;	}
 #treeImg{
 	float : left;
-	margin-left : 15%;
+	margin-left : 5%;
+	margin-bottom : 10%;
 }
 #treeHeader{
 	float : right;
-	width : 500px;	
+	width : 400px;	
 }
 #treeInfo{
 	clear : both;

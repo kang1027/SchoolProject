@@ -20,7 +20,6 @@
 <meta charset="UTF-8">
 <title>나무 정보</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
 <style>
 
 #TreeInfoText{

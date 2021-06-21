@@ -105,6 +105,7 @@ header{height : 50px; position : fixed; width : 100%; z-index : 1;}
 	position : absolute;
 	animation : 25s slides infinite linear;
 }
+
 @keyframes slides{
 	0%{left : 0;}
 	15%{left : 0;}

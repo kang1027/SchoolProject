@@ -52,7 +52,6 @@ CREATE TABLE "TREECAMPAIGN" (
 select * from treecampaign order by tcdate asc
 select * from treecorporation
 /*TREEINFO 가값*/
-
 INSERT INTO TREEINFO VALUES(1,'오민우나무','100','학생이다.','오민우.JPG');
 INSERT INTO TREEINFO VALUES(2,'서준호나무','90','학생이다.','서준호.JPG');
 /*USERINFO 가값*/
@@ -67,3 +66,4 @@ INSERT INTO TREECAMPAIGN VALUES(001 ,'트리플래닛', 'https://treepla.net/', 
 
 insert into treecorporation values('환경교육센터','http://www.edutopia.or.kr/','환경교육센터는 생명, 평화, 참여, 나눔의 가치를 추구합니다.','11','02-735-8677');
 select * from treecampaign
+

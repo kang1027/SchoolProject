@@ -443,7 +443,7 @@ public class TreeInfoDAO {
 		int state = 0;
 		try{
 			conn = JDBCConn.getC();
-			stmt = conn.prepareStatement("update treecampaign set cpname=?, cpurl=?, tcname=?, tcintro=?, tcurl=?, tccall=?, tcdate=? where tccode=?");
+			stmt = conn.prepareStatement("update treecampaign set cpname=?, cpurl=?, tcname=?, tcintro=?, tcurl=?, tccall=?, tcdate=?, tcphoto=? where tccode=?");
 			stmt.setString(1, vo.getCpname());
 			stmt.setString(2, vo.getCpurl());
 			stmt.setString(3, vo.getTcname());
@@ -451,7 +451,8 @@ public class TreeInfoDAO {
 			stmt.setString(5, vo.getTcurl());
 			stmt.setString(6, vo.getTccall());
 			stmt.setDate(7, vo.getTcdate());
-			stmt.setInt(8, vo.getTccode());
+			stmt.setString(8, vo.getTcphoto());
+			stmt.setInt(9, vo.getTccode());
 			state = stmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

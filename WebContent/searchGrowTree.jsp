@@ -34,7 +34,6 @@
 <meta charset="UTF-8">
 <title>키서치</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
 <style>
 	#serachTable{
 		width : 600px;

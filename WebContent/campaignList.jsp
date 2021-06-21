@@ -24,7 +24,6 @@
 <meta charset="UTF-8">
 <title>캠페인</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
 <style>
 #campainTable{
 	width : 1500px;

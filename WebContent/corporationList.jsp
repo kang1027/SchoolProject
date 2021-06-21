@@ -20,7 +20,6 @@
 <meta charset="UTF-8">
 <title>기업</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
 <style>
 	#corporationTable{	width : 1500px;
 	margin : auto;
@@ -47,10 +46,24 @@ select{
 	font-family : "content";
 	font-weight : bold;
 }
+#TreeInfoText{
+	margin-bottom : 70px;
+	margin-left : 15px;
+	font-family : "main";
+	font-size : 1.2em;
+	line-height : 60px;
+}
+hr{
+border : 1px solid #e0e0e0;
+margin-bottom : 70px;}
 </style>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
+	<div id="TreeInfoText">
+		<h1>환경을 위해<br>힘쓰는 회사들</h1>
+	</div>
+	<hr>
 	<table border="1" id="corporationTable" >
 	
 	 	<tr><th>등록된 기업 수 : <%=max %></th></tr>

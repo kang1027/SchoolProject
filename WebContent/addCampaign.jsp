@@ -13,14 +13,34 @@
 <meta charset="UTF-8">
 <title>캠페인 등록</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
+<link rel="stylesheet" href="css/addupdate.css">
+<style>
+	td{padding : 7px;}
+</style>
 </head>
 <body>
 	<%@ include file="header.jsp"%>
 	<div id="padding"></div>
+	
+			
 	<form  method="post" action="addCampaignCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()" >
-		<table border="1">
-			<tr>
+	
+	<div id="wrap">
+		<input type="file" class="hidden_input" id="imageSelector" name="treePhoto" 
+					accept="image/jpeg, image/jpg, image/png">
+			<div id="content">
+				<div id="treeImg">
+					<br>
+					<img src="" class="thumb"><br>
+					<input type="button" id="changeImgSize" value="원본 보기" style="visibility: hidden;">
+					<input type="button" id="reChangeImgSize" value="되돌리기" style="visibility: hidden;">
+					<img src="" style="width : 400px;">
+				</div>
+				
+				
+				<div id="treeHeader">
+				<table>
+					<tr>
 				<th>기업 선택</th>
 				<td><select id="cpname" name="cpname">
 					<option value="">기업을 선택해주세요.</option>
@@ -28,45 +48,40 @@
 					<option value="<%=vo.getCpname()%>-<%=vo.getCpurl()%>"><%=vo.getCpname() %></option>
 					<%} %>
 				</select>  <a href="addCorporation.jsp">기업이 없나요?</a></td>
-			</tr>
-			<tr>
-				<th>캠페인 이름</th>
-				<td><input type="text" name="tcname" id="tcname" value="" placeholder="캠페인 이름을 입력해주세요..."></td>
-			</tr>
-			<tr>
-				<th>캠페인 주소</th>
-				<td><input type="text" name="tcurl" id="tcurl" value="" placeholder="캠페인 주소를 입력해주세요..."></td>
-			</tr>
-			<tr>
-				<th>캠페인 소개</th>
-				<td><textarea name="tcintro" id="tcintro" cols="30" rows="10" placeholder="캠페인을 소개해주세요.."></textarea></td>
-			</tr>
-			<tr>
-				<th>캠페인 문의</th>
-				<td>
-					<input type="text" name="tccall" id="tccall" value="" placeholder="캠페인 문의번호를 입력해주세요...">
-				</td>
-			</tr>
-			<tr>
-				<th>캠페인 날짜</th>
-				<td>
-					<input type="date" name="tcdate" id="tcdate" value=""> <small>※마감날짜를 기재해주세요.</small>
-				</td>
-			</tr>
-			<tr>
-				<th>캠페인 사진</th>
-				<td>
-					<input type="file" class="hidden_input" id="imageSelector" name="treePhoto" 
-					accept="image/jpeg, image/jpg, image/png"><br>
-					<img src="" class="thumb">
-					<input type="button" id="changeImgSize" value="원본 보기" style="visibility: hidden;">
-					<input type="button" id="reChangeImgSize" value="되돌리기" style="visibility: hidden;">
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="캠페인 등록하기"></th>
-			</tr>
-		</table>
+				</tr>
+				<tr>
+					<th>캠페인 이름</th>
+					<td><input type="text" name="tcname" id="tcname" value="" placeholder="캠페인 이름을 입력해주세요..."></td>
+				</tr>
+				<tr>
+					<th>캠페인 주소</th>
+					<td><input type="text" name="tcurl" id="tcurl" value="" placeholder="캠페인 주소를 입력해주세요..."></td>
+				</tr>
+
+				<tr>
+					<th>캠페인 문의</th>
+					<td>
+						<input type="text" name="tccall" id="tccall" value="" placeholder="캠페인 문의번호를 입력해주세요...">
+					</td>
+				</tr>
+				<tr>
+					<th>캠페인 날짜</th>
+					<td>
+						<input type="date" name="tcdate" id="tcdate" value=""> <small>※마감날짜를 기재해주세요.</small>
+					</td>
+				</tr>
+				<tr>
+				</table>
+					
+					
+				</div>
+				<div id="treeInfo">
+					<h1>캠페인 소개</h1>
+					<p><textarea name="tcintro" id="tcintro" cols="170" rows="10" placeholder="캠페인을 자세히 소개해주세요.. "></textarea></p>
+				</div>
+			<input type="submit" value="캠페인 등록하기">
+			</div>
+		</div>
 	</form>
 	
 	<%@ include file="footer.jsp" %>
@@ -125,7 +140,7 @@
 			      var preview = document.querySelector('.thumb');
 			      preview.src = URL.createObjectURL(elem.files[0]); //파일 객체에서 이미지 데이터 가져옴.
 			      document.getElementById('changeImgSize').style.visibility = "visible";
-			      document.querySelector(".thumb").width = 200;
+			      document.querySelector(".thumb").width = 400;
 			      preview.onload = function() {
 			          URL.revokeObjectURL(preview.src); //URL 객체 해제
 			      }
@@ -143,7 +158,7 @@
 				document.getElementById('reChangeImgSize').style.visibility = "visible";
 			})
 			document.getElementById('reChangeImgSize').addEventListener('click',function(){
-				document.querySelector(".thumb").width = 200;
+				document.querySelector(".thumb").width = 400;
 				document.getElementById('reChangeImgSize').style.visibility = "hidden";
 				document.getElementById('changeImgSize').style.visibility = "visible";
 			})

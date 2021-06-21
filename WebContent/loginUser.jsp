@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
 <style>
 	h1{
 		font-family : "main";

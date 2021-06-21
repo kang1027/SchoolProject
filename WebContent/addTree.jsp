@@ -6,59 +6,55 @@
 <meta charset="UTF-8">
 <title>나무 등록</title>
 <link rel="stylesheet" href="css/head.css">
-<link rel="stylesheet" href="css/page.css">
-<style>
-	
-</style>
+<link rel="stylesheet" href="css/addupdate.css">
+
 </head>
 <body>
 	<%@ include file="header.jsp"%>
 		<div id="padding"></div>
+		
 	<form  method="post" action="addTreeCtrl.jsp" enctype="multipart/form-data" onsubmit="return checkV()">
-		<table border="1">
-			<tr>
-				<th>나무 이름</th>
-				<td><input type="text" name="treename" id="treename" value="" placeholder="나무 이름을 입력해주세요..."></td>
-			</tr>
-			<tr>
-				<th>나무 수명</th>
-				<td><input type="text" name="treelife" id="treelife" value="" placeholder="나무 수명을 입력해주세요..."></td>
-			</tr>
-			<tr>
-				<th>나무 분포 지역<small>',' 로 구분</small></th>
-				<td><input type="text" name="treearea" id="treearea" value="" placeholder="나무 분포 지역을 입력해주세요..."></td>
-			</tr>
-			<tr>
-				<th>나무 소개</th>
-				<td><textarea name="treeintro" id="treeintro" name="treeintro" cols="30" rows="3" placeholder="나무 소개를 간략히 입력해주세요..."></textarea></td>
-			</tr>
-			<tr>
-				<th>나무 특징</th>
-				<td><textarea name="treepoint" id="treepoint" cols="30" rows="10" placeholder="나무 특징 입력해주세요..."></textarea></td>
-			</tr>
-				<tr><td rowspan="8">나무 분류<small>공백 가능</small></td></tr>
-				<tr><td>계 : <input type="text" id="treeclass1" name="treeclass1" placeholder="분류 '계'를 입력해주세요."></td></tr>
+		<div id="wrap">
+		<input type="file" class="hidden_input" id="imageSelector" name="treePhoto" 
+					accept="image/jpeg, image/jpg, image/png">
+			<div id="content">
+				<div id="treeImg">
+					<br>
+					<img src="" class="thumb"><br>
+					<input type="button" id="changeImgSize" value="원본 보기" style="visibility: hidden;">
+					<input type="button" id="reChangeImgSize" value="되돌리기" style="visibility: hidden;">
+					<img src="" style="width : 400px;">
+				</div>
+				
+				
+				<div id="treeHeader">
+				<table>
+					<tr><td>이름 : </td><td><input type="text" name="treename" id="treename" value="" placeholder="나무 이름을 입력해주세요..."></td></tr>
+					<tr><td>수명 : </td><td><input type="text" name="treelife" id="treelife" value="" placeholder="나무 수명을 입력해주세요..."></td></tr>
+					<tr><td>분포 지역 : </td><td><input type="text" name="treearea" id="treearea" value="" placeholder="나무 분포 지역을 입력해주세요..."></td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td rowspan="8">분류</td></tr>
+					<tr><td>계 : <input type="text" id="treeclass1" name="treeclass1" placeholder="분류 '계'를 입력해주세요."></td></tr>
 				<tr><td>문 : <input type="text" id="treeclass2" name="treeclass2" placeholder="분류 '문'를 입력해주세요."></td></tr>
 				<tr><td>강 : <input type="text" id="treeclass3" name="treeclass3" placeholder="분류 '강'를 입력해주세요."></td></tr>
 				<tr><td>목 : <input type="text" id="treeclass4" name="treeclass4" placeholder="분류 '목'를 입력해주세요."></td></tr>
 				<tr><td>과 : <input type="text" id="treeclass5" name="treeclass5" placeholder="분류 '과'를 입력해주세요."></td></tr>
 				<tr><td>속 : <input type="text" id="treeclass6" name="treeclass6" placeholder="분류 '속'를 입력해주세요."></td></tr>
-				<tr><td>종 : <input type="text" id="treeclass7" name="treeclass7" placeholder="분류 '종'를 입력해주세요."></td>
-			</tr>
-			<tr>
-				<th>나무사진</th>
-				<td>
-					<input type="file" class="hidden_input" id="imageSelector" name="treePhoto" 
-					accept="image/jpeg, image/jpg, image/png"><br>
-					<img src="" class="thumb">
-					<input type="button" id="changeImgSize" value="원본 보기" style="visibility: hidden;">
-					<input type="button" id="reChangeImgSize" value="되돌리기" style="visibility: hidden;">
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="나무 등록하기"></th>
-			</tr>
-		</table>
+				<tr><td>종 : <input type="text" id="treeclass7" name="treeclass7" placeholder="분류 '종'를 입력해주세요."></td></tr>
+				</table>
+					
+					
+				</div>
+				<div id="treeInfo">
+					<h1>개요</h1>
+					<p><textarea name="treeintro" id="treeintro" name="treeintro" cols="170" rows="7" placeholder="나무 소개를 간략히 입력해주세요..."></textarea></p>
+					<h1>특징</h1>
+					<p><textarea name="treepoint" id="treepoint" cols="170" rows="10" placeholder="나무 특징 입력해주세요..."></textarea></p>		
+				</div>
+			<input type="submit" value="나무 등록하기">
+			</div>
+		</div>
+		
 	</form>
 	<%@ include file="footer.jsp" %>
 	
@@ -106,7 +102,7 @@
 		      var preview = document.querySelector('.thumb');
 		      preview.src = URL.createObjectURL(elem.files[0]); //파일 객체에서 이미지 데이터 가져옴.
 		      document.getElementById('changeImgSize').style.visibility = "visible";
-		      document.querySelector(".thumb").width = 200;
+		      document.querySelector(".thumb").width = 400;
 		      preview.onload = function() {
 		          URL.revokeObjectURL(preview.src); //URL 객체 해제
 		      }
@@ -124,7 +120,7 @@
 			document.getElementById('reChangeImgSize').style.visibility = "visible";
 		})
 		document.getElementById('reChangeImgSize').addEventListener('click',function(){
-			document.querySelector(".thumb").width = 200;
+			document.querySelector(".thumb").width = 400;
 			document.getElementById('reChangeImgSize').style.visibility = "hidden";
 			document.getElementById('changeImgSize').style.visibility = "visible";
 		})

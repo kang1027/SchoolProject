@@ -1,0 +1,41 @@
+@charset "utf-8";
+#wrap{
+	margin : auto;
+	width : 1200px;
+	border : 1px solid #d1d1d1;
+	padding : 50px;
+	border-radius : 30px;
+}
+#h{
+margin : 20px;
+	margin-bottom : 10%;
+}
+#h h1{
+	font-family : "main";
+	font-size : 2.5em;
+	
+}
+#h p a{text-decoration : none; color : black; border : 1px solid black; padding : 3px;	}
+#treeImg{
+	float : left;
+	margin-left : 5%;
+	margin-bottom : 10%;
+}
+#treeHeader{
+	float : right;
+	width : 400px;	
+}
+#treeInfo{
+	clear : both;
+}
+#treeInfo h1{
+	font-family : "main";
+}
+table{
+	border : none;
+	font-family : "content";
+}
+p{
+	font-family : "content", "바탕체";
+	line-height : 25px;
+}
