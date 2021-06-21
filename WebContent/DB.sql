@@ -15,9 +15,6 @@ CREATE TABLE "TREEINFO" (
 	"TREEPHOTO"	VARCHAR2(1000)		NULL,
 	constraint treeinfo_pk primary key("TREECODE","TREENAME")
 );
-select * from treeinfo where treename = '개회나무'
-select treename from treeinfo
-select * from userinfo
 CREATE TABLE "USERINFO" (
 	"USERID"	VARCHAR2(50)		primary key,
 	"USERPW"	VARCHAR2(30)		NULL,
@@ -49,8 +46,6 @@ CREATE TABLE "TREECAMPAIGN" (
 	CONSTRAINT "FK_TP_TO_TC1" FOREIGN KEY ("CPNAME","CPURL") REFERENCES "TREECORPORATION"("CPNAME","CPURL")
 
 );
-select * from treecampaign order by tcdate asc
-select * from treecorporation
 /*TREEINFO 가값*/
 INSERT INTO TREEINFO VALUES(1,'오민우나무','100','학생이다.','오민우.JPG');
 INSERT INTO TREEINFO VALUES(2,'서준호나무','90','학생이다.','서준호.JPG');
@@ -65,5 +60,5 @@ select * from treeinfo
 INSERT INTO TREECAMPAIGN VALUES(001 ,'트리플래닛', 'https://treepla.net/', '강원 산불피해 복구 숲', '까맣게 타버린 강원의 숲, 까맣게 잊은 당신에게','https://treepla.net/forestfires','02-512-2492', '2021-06-12',1,'11.JPG');
 
 insert into treecorporation values('환경교육센터','http://www.edutopia.or.kr/','환경교육센터는 생명, 평화, 참여, 나눔의 가치를 추구합니다.','11','02-735-8677');
-select * from treecampaign
+
 
