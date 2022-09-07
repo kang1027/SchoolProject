@@ -10,8 +10,8 @@ Tttipy 프로젝트는 커넥션풀을 사용해 사용 서버의 context.xml �
         type="javax.sql.DataSource"<br>
         driverClassName="oracle.jdbc.OracleDriver"<br>
         url="jdbc:oracle:thin:@localhost:1521:XE"<br>
-        username="ttipy"<br>
-        password="k2167512##"<br>
+        username="scott"<br>
+        password="tiger"<br>
         maxActive="50"<br>
         maxWait="-1"><br><br>
 
