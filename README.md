@@ -15,7 +15,7 @@ Ttipy project is using connection pull and and you should've update your context
         username="scott"<br>
         password="tiger"<br>
         maxActive="50"<br>
-        maxWait="-1"><br><br>
+        maxWait="-1" /><br><br>
 
 
 <br>
