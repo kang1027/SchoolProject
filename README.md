@@ -35,3 +35,7 @@ public static Connection getC() throws Exception {<br>
 # ERD
 https://www.erdcloud.com/d/dH7pTQZrWXHaJJzfA
 
+# Addition Coment
+[트티파이 보고서.pdf](https://github.com/kang1027/Ttipy/files/12081663/default.pdf)
+
+
