@@ -6,6 +6,7 @@ And it was hard to find a site that collects companies working hard to plant tre
 # If you use this code
 Ttipy project is using connection pull and and you should've update your context.xml file of your using server
 <br>
+```
         <Resource<br>
         name="jdbc/oracle"<br>
         auth="Container"<br>
@@ -16,13 +17,15 @@ Ttipy project is using connection pull and and you should've update your context
         password="tiger"<br>
         maxActive="50"<br>
         maxWait="-1" /><br><br>
-
+```
 
 <br>
 If you when running this code, not connecting JDBC driver, you should update getC() function and run.
 If the JDBC driver does not connect at runtime, you should update getC() function with the code below.<br>
 
 <br>
+
+```
 public static Connection getC() throws Exception {<br>
 			Context init = new InitialContext();<br>
 			Context envContext = (Context) init.lookup("java:/comp/env");<br>
@@ -30,7 +33,7 @@ public static Connection getC() throws Exception {<br>
 			Connection conn = ds.getConnection();<br>
 			return conn;<br>
 		}<br><br>
-    
+```
 
 # ERD
 https://www.erdcloud.com/d/dH7pTQZrWXHaJJzfA
